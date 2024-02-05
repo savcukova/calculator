@@ -17,6 +17,8 @@ def calculator() -> None:
             power()
         elif choice == "avg":
             average()
+        elif choice == "+" or "-" or "*" or "/":
+            arithmetic_operations()
         
         
 def show_selection(*args) -> None:
@@ -88,8 +90,17 @@ def average() -> None:
 
 
 def arithmetic_operations() -> None:
+    entry = ""
+    
+    while True:
+        button = input("Select number or operator, '=' for result: ")
         
+        if button.isnumeric() or button in ('+', '-', '*', '/'):
+            entry += button
+        elif button == "=":
+            print(f'{entry} = {eval(entry)}')
+            break
         
-        
+              
 if __name__ == "__main__":
     calculator()
